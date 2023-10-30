@@ -216,8 +216,10 @@ class ArticleController {
    * 根据id获取文章信息
    */
   async getArticleById(ctx) {
+  
     try {
-      const { id } = ctx.query;
+
+      const { id } = ctx.params;
 
       let res = await getArticleById(id);
       ctx.body = result("查询文章详情成功", res);

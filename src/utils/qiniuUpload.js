@@ -20,8 +20,9 @@ const upToQiniu = (filePath, key) => {
   const uploadToken = putPolicy.uploadToken(mac)
   const config = new qiniu.conf.Config()
   // 空间对应的机房 一定要按自己属区Zone对象
-  config.zone = qiniu.zone.Zone_z2
+  config.zone = qiniu.zone.Zone_z0
   const localFile = filePath
+  // console.log(localFile);
   const formUploader = new qiniu.form_up.FormUploader(config)
   const putExtra = new qiniu.form_up.PutExtra()
   // 文件上传
@@ -31,8 +32,10 @@ const upToQiniu = (filePath, key) => {
     // putExtra是上传的文件参数，采用源码中的默认参数
     formUploader.putStream(uploadToken, key, localFile, putExtra, function (respErr, respBody, respInfo) {
       if (respErr) {
+        console.log(respErr);
         reject(respErr)
       } else {
+        console.log('成功', respBody);
         resolved(respBody)
       }
     })

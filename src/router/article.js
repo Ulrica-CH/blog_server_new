@@ -125,7 +125,7 @@ router.put("/addReadingDuration", addReadingDuration);
 
 /** 公共 start */
 // 根据id获取文章详情
-router.get("/getArticleById", getArticleById);
+router.get("/getArticleById/:id", getArticleById);
 /** 公共 end */
 
 // 批量替换url
